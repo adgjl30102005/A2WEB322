@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Details</title>
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+
+<body class="bg-gray-100">
+    <%- include('partials/navbar', { page: '' }) %>
+
+    <!-- Hero Section -->
+    <div class="bg-blue-600 text-white text-center py-20">
+        <h1 class="text-4xl font-semibold"><%= project.title %></h1>
+        <p class="mt-4 text-xl">Below, you will find detailed information about the project.</p>
+    </div>
+
+    <!-- Project Details -->
+    <div class="container mx-auto p-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+                <img src="<%= project.feature_img_url %>" alt="<%= project.title %>" class="rounded-lg shadow-lg">
+            </div>
+            <div>
+                <h2 class="text-2xl font-semibold text-gray-800">Project Summary</h2>
+                <p class="mt-4 text-lg text-gray-700"><%= project.intro_short %></p>
+
+                <h3 class="mt-8 text-xl font-semibold text-gray-800">Impact</h3>
+                <p class="mt-4 text-lg text-gray-700"><%= project.impact %></p>
+
+                <h3 class="mt-8 text-xl font-semibold text-gray-800">More Information</h3>
+                <a href="<%= project.original_source_url %>" class="text-blue-500 hover:underline">Click here for more information</a>
+            </div>
+        </div>
+
+        <!-- Quote Section -->
+        <div class="mt-12 bg-gray-200 p-6 rounded-lg">
+            <p id="quote" class="text-xl italic text-gray-700"></p>
+            <p id="quote-author" class="text-lg text-right font-semibold text-gray-600"></p>
+        </div>
+
+        <!-- Back Button -->
+        <div class="mt-8 text-center">
+            <a href="#" onclick="history.back(); return false;" class="btn btn-sm btn-primary">Back</a>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            fetch('https://dummyjson.com/quotes/random')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('quote').innerText = `"${data.quote}"`;
+                    document.getElementById('quote-author').innerText = `— ${data.author}`;
+                })
+                .catch(error => console.error('Error fetching quote:', error));
+        });
+    </script>
+</body>
+
+</html>

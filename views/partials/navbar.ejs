@@ -1,0 +1,24 @@
+<nav class="fixed w-full top-0 bg-white shadow-md z-50 py-4 px-6 flex justify-between items-center">
+    <!-- Left side: Climate Solutions -->
+    <a href="/" class="text-xl font-bold">Climate Solutions</a>
+    
+    <!-- Right side: Menu (Home, About, and Sector) -->
+    <div class="flex-none">
+        <ul class="menu menu-horizontal p-0 flex space-x-6"> <!-- Added space-x-6 here for horizontal spacing -->
+            <!-- Home link -->
+            <li>
+                <a class="<%= (page == '/') ? 'active' : '' %> text-xl font-bold" href="/">Home</a>
+            </li>
+            
+            <!-- About link -->
+            <li>
+                <a class="<%= (page == '/about') ? 'active' : '' %> hover:underline" href="/about">About</a>
+            </li>
+            
+            <!-- Sector dropdown -->
+            <li>
+                <a class="<%= (page == '/solutions/projects') ? 'active' : '' %> hover:underline" href="/solutions/projects">Projects</a>
+            </li>
+        </ul>
+    </div>
+</nav>

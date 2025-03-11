@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Climate Solutions</title>
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+<body class="bg-gray-100">
+    <%- include('partials/navbar', { page: '/' }) %>
+    <div class="container mx-auto px-4 mt-16">
+        <section class="hero bg-blue-500 text-white text-center p-10 rounded-lg">
+            <div class="hero-content text-center">
+                <div class="max-w-md">
+                <h1 class="text-3xl font-bold leading-snug">Explore Our Climate Projects</h1>
+                <p class="mt-4">Discover solutions that make a difference.</p>
+                <a href="/solutions/projects" class="btn bg-white text-blue-500 mt-4 inline-block">View Projects</a>
+                <p class="mt-4 text-sm">Student Name: Thien Phuc Ngo | ID: 115294233</p>
+            </div>
+        </section>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6" id="projects-container">
+            <% projects.forEach(function(project) { %>
+                <div class="card bg-white shadow-md p-4 rounded-lg" id="project-<%= project.id %>">
+                    <img src="<%= project.feature_img_url %>" alt="<%= project.title %>" class="rounded-t-lg">
+                    <h2 class="text-lg font-bold mt-2"><%= project.title %></h2>
+                    <p><%= project.intro_short %></p>
+                    <a href="/solutions/projects/<%= project.id %>" class="btn bg-blue-500 text-white mt-2">Learn More</a>
+                </div>
+            <% }); %>
+        </div>
+    </div>
+</body>
+</html>

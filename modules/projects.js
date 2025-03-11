@@ -33,8 +33,5 @@ function getProjectsBySector(sector) {
         project.sector.toLowerCase().includes(sector.toLowerCase())
     );
 }
-initialize();
-console.log(getAllProjects());
-console.log(getProjectById(9));
-console.log(getProjectsBySector("electricity"));
+
 module.exports = { initialize, getAllProjects, getProjectById, getProjectsBySector }
