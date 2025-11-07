@@ -11,8 +11,14 @@
     <%- include('partials/navbar', { page: '/solutions/projects' }) %>
 
     <div class="container mx-auto p-6">
-        <h1 class="text-3xl font-semibold text-center text-gray-800 mb-6">Projects</h1>
-
+        <section class="hero bg-blue-500 text-white text-center p-10 rounded-lg">
+            <div class="hero-content text-center">
+                <div class="max-w-md">
+                <h1 class="text-3xl font-bold leading-snug">Projects</h1>
+                <p class="mt-4">Browse the current list of Projects in our database. Click the theme to filter by sectors such as:</p>
+                <a href="/solutions/projects?sector=electricity" class="btn bg-white text-blue-500 mt-4 inline-block">Electricity</a>
+            </div>
+        </section>
         <!-- Table -->
         <div class="overflow-x-auto">
             <table class="table w-full max-w-4xl mx-auto table-auto border-collapse bg-white shadow-md rounded-lg">
