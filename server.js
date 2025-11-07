@@ -1,12 +1,13 @@
 /********************************************************************************
-*  WEB322 – Assignment 04
+*  WEB322 – Assignment 02
 * 
 *  I declare that this assignment is my own work in accordance with Seneca's
 *  Academic Integrity Policy:
 * 
 *  https://www.senecapolytechnic.ca/about/policies/academic-integrity-policy.html
 * 
-*  Name: Thien Phuc Ngo Student ID: 115294233 Date: 10/03/2025
+*  Name: Thien Phuc Ngo Student ID: 115294233 Date: 07/11/2025
+*  Published URL:https://a3-m0dp.onrender.com/
 *
 ********************************************************************************/
 
@@ -43,7 +44,7 @@ app.get('/about', (req, res) => {
 app.get('/solutions/projects', (req, res) => {
     const sector = req.query.sector;
     if (sector) {
-        const filteredProjects = projects.filter(project => project.sector === sector);
+        const filteredProjects = projectData.getProjectsBySector(sector);
 
         if (filteredProjects.length === 0) {
             return res.status(404).render('404', { message: `Sorry, no projects found for the sector: ${sector}` });
@@ -57,23 +58,14 @@ app.get('/solutions/projects', (req, res) => {
 });
 
 app.get('/solutions/projects/:id', (req, res) => {
-    const projectId = req.params.id;
-    const project = projects.find(p => p.id === parseInt(projectId));
+    const projectId = parseInt(req.params.id);
+    const project = projectData.getProjectById(projectId);
 
     if (!project) {
-        return res.status(404).render('404', { message: `Sorry, no project found with ID: ${projectId}` });
+        return res.status(404).render('404', { message: `Sorry, we can't find the project with the correspond ID: ${projectId}` });
     }
 
     res.render('project', { project: project });
-});
-// POST route at /post-request
-app.post('/post-request', (req, res) => {
-    res.json({
-        student: "Thien Phuc Ngo",
-        student_id: "115294233",
-        timestamp: new Date().toISOString(),
-        request_body: req.body
-    });
 });
 
 // 404 Route

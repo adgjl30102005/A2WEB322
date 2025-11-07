@@ -5,19 +5,23 @@
     <!-- Right side: Menu (Home, About, and Sector) -->
     <div class="flex-none">
         <ul class="menu menu-horizontal p-0 flex space-x-6"> <!-- Added space-x-6 here for horizontal spacing -->
-            <!-- Home link -->
-            <li>
-                <a class="<%= (page == '/') ? 'active' : '' %> text-xl font-bold" href="/">Home</a>
-            </li>
-            
+
             <!-- About link -->
             <li>
                 <a class="<%= (page == '/about') ? 'active' : '' %> hover:underline" href="/about">About</a>
             </li>
-            
-            <!-- Sector dropdown -->
+            <!-- Sector Dropdown -->
             <li>
-                <a class="<%= (page == '/solutions/projects') ? 'active' : '' %> hover:underline" href="/solutions/projects">Projects</a>
+                <details>
+                <summary>Sector</summary>
+                <ul class="p-2 bg-white rounded-t-none w-56 shadow-lg">
+                    <li><a href="/solutions/projects?sector=Land%20Sinks">Land Sinks</a></li>
+                    <li><a href="/solutions/projects?sector=Industry">Industry</a></li>
+                    <li><a href="/solutions/projects?sector=Transportation">Transportation</a></li>
+                    <li><a href="/solutions/projects?sector=Electricity">Electricity</a></li>
+                    <li><a href="/solutions/projects?sector=Food,%20Agriculture,%20and%20Land%20Use">Food, Agriculture, and Land Use</a></li>
+                </ul>
+                </details>
             </li>
         </ul>
     </div>

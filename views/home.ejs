@@ -23,7 +23,7 @@
                 <div class="card bg-white shadow-md p-4 rounded-lg" id="project-<%= project.id %>">
                     <img src="<%= project.feature_img_url %>" alt="<%= project.title %>" class="rounded-t-lg">
                     <h2 class="text-lg font-bold mt-2"><%= project.title %></h2>
-                    <p><%= project.intro_short %></p>
+                    <p><%= project.summary_short %></p>
                     <a href="/solutions/projects/<%= project.id %>" class="btn bg-blue-500 text-white mt-2">Learn More</a>
                 </div>
             <% }); %>
