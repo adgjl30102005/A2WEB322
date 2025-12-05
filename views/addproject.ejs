@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Project</title>
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+<body class="bg-gray-100">
+
+<%- include('partials/navbar', { page: '/solutions/addProject' }) %>
+
+<div class="container mx-auto px-4 mt-16">
+
+    <!-- Hero Header -->
+    <section class="hero bg-blue-500 text-white text-center p-10 rounded-lg mb-8">
+        <div class="hero-content text-center">
+            <div class="max-w-md mx-auto">
+                <h1 class="text-3xl font-bold leading-snug">Add a New Climate Project</h1>
+                <p class="mt-4">Fill out the form below to add a new climate solution.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Form Card -->
+    <div class="bg-white shadow-md p-6 rounded-lg max-w-2xl mx-auto">
+        <form action="/solutions/addProject" method="POST" class="space-y-4">
+
+            <!-- Title -->
+            <div>
+                <label class="font-semibold">Project Title</label>
+                <input type="text" name="title" class="input input-bordered w-full mt-1" required>
+            </div>
+
+            <!-- Feature Image URL -->
+            <div>
+                <label class="font-semibold">Feature Image URL</label>
+                <input type="url" name="feature_img_url" class="input input-bordered w-full mt-1" required>
+            </div>
+
+            <!-- Sector Select -->
+            <div>
+                <label class="font-semibold">Sector</label>
+                <select name="sector_id" class="select select-bordered w-full mt-1" required>
+                    <% sectors.forEach(s => { %>
+                        <option value="<%= s.id %>"><%= s.sector_name %></option>
+                    <% }) %>
+                </select>
+            </div>
+
+            <!-- Intro Short -->
+            <div>
+                <label class="font-semibold">Intro</label>
+                <textarea name="intro_short" class="textarea textarea-bordered w-full mt-1" required></textarea>
+            </div>
+
+            <!-- Summary Short -->
+            <div>
+                <label class="font-semibold">Summary (Short)</label>
+                <textarea name="summary_short" class="textarea textarea-bordered w-full mt-1" required></textarea>
+            </div>
+
+            <!-- Impact -->
+            <div>
+                <label class="font-semibold">Impact</label>
+                <textarea name="impact" class="textarea textarea-bordered w-full mt-1" required></textarea>
+            </div>
+
+            <!-- Original Source URL -->
+            <div>
+                <label class="font-semibold">Original Source URL</label>
+                <input type="url" name="original_source_url" class="input input-bordered w-full mt-1" required>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="btn bg-blue-500 text-white w-full mt-4">
+                Add Project
+            </button>
+
+        </form>
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -54,14 +54,23 @@
 
       <!-- Back Button -->
       <div class="mt-8 text-center md:text-left">
-        <a 
-          href="#" 
-          onclick="history.back(); return false;" 
-          class="btn btn-sm btn-primary"
-        >
-          Back
-        </a>
+          <a 
+            href="#" 
+            onclick="history.back(); return false;" 
+            class="btn btn-sm btn-primary"
+          >
+            Back
+          </a>
       </div>
+
+      <% if (session.user) { %>
+      <div class="mt-4 text-center md:text-left">
+          <a href="/solutions/editProject/<%= project.id %>" 
+            class="btn bg-blue-500 text-white">
+              Edit Project: <%= project.title %>
+          </a>
+      </div>
+      <% } %>
     </div>
   </div>
 </div>
@@ -79,5 +88,4 @@
         });
     </script>
 </body>
-
 </html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+<body class="bg-gray-100">
+
+<%- include('partials/navbar', { page: '/login' }) %>
+
+<div class="container mx-auto px-4 mt-16">
+
+    <!-- Hero Section -->
+    <section class="hero bg-blue-500 text-white text-center p-10 rounded-lg mb-8">
+        <div class="max-w-md mx-auto">
+            <h1 class="text-3xl font-bold">Admin Login</h1>
+            <p class="mt-4">Enter your credentials to manage climate projects.</p>
+        </div>
+    </section>
+
+    <!-- Login Card -->
+    <div class="bg-white shadow-md p-6 rounded-lg max-w-md mx-auto">
+
+        <form action="/login" method="POST" class="space-y-4">
+
+            <!-- Username -->
+            <div>
+                <label class="font-semibold">User Name</label>
+                <input type="text" name="userName"
+                    value="<%= userName %>" 
+                    class="input input-bordered w-full mt-1" required>
+            </div>
+
+            <!-- Password -->
+            <div>
+                <label class="font-semibold">Password</label>
+                <input type="password" name="password" 
+                       class="input input-bordered w-full mt-1" required>
+            </div>
+
+            <button type="submit" class="btn bg-blue-500 text-white w-full mt-4">
+                Login
+            </button>
+        </form>
+
+        <!-- Error Message -->
+        <% if (errorMessage) { %>
+            <div class="alert alert-error mt-4">
+                <span><%= errorMessage %></span>
+            </div>
+        <% } %>
+
+    </div>
+
+</div>
+
+</body>
+</html>

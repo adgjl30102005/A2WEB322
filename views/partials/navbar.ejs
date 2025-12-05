@@ -1,28 +1,66 @@
 <nav class="fixed w-full top-0 bg-white shadow-md z-50 py-4 px-6 flex justify-between items-center">
-    <!-- Left side: Climate Solutions -->
+    
+    <!-- Left side: Climate Solutions Logo -->
     <a href="/" class="text-xl font-bold">Climate Solutions</a>
     
-    <!-- Right side: Menu (Home, About, and Sector) -->
+    <!-- Right side menu -->
     <div class="flex-none">
-        <ul class="menu menu-horizontal p-0 flex space-x-6"> <!-- Added space-x-6 here for horizontal spacing -->
+        <ul class="menu menu-horizontal p-0 flex space-x-6">
 
-            <!-- About link -->
+            <!-- About -->
             <li>
                 <a class="<%= (page == '/about') ? 'active' : '' %> hover:underline" href="/about">About</a>
             </li>
+
             <!-- Sector Dropdown -->
             <li>
                 <details>
-                <summary>Sector</summary>
-                <ul class="p-2 bg-white rounded-t-none w-56 shadow-lg">
-                    <li><a href="/solutions/projects?sector=Land%20Sinks">Land Sinks</a></li>
-                    <li><a href="/solutions/projects?sector=Industry">Industry</a></li>
-                    <li><a href="/solutions/projects?sector=Transportation">Transportation</a></li>
-                    <li><a href="/solutions/projects?sector=Electricity">Electricity</a></li>
-                    <li><a href="/solutions/projects?sector=Food,%20Agriculture,%20and%20Land%20Use">Food, Agriculture, and Land Use</a></li>
-                </ul>
+                    <summary>Sector</summary>
+                    <ul class="p-2 bg-white rounded-t-none w-56 shadow-lg">
+                        <li><a href="/solutions/projects?sector=Land%20Sinks">Land Sinks</a></li>
+                        <li><a href="/solutions/projects?sector=Industry">Industry</a></li>
+                        <li><a href="/solutions/projects?sector=Transportation">Transportation</a></li>
+                        <li><a href="/solutions/projects?sector=Electricity">Electricity</a></li>
+                        <li><a href="/solutions/projects?sector=Food,%20Agriculture,%20and%20Land%20Use">Food, Agriculture, and Land Use</a></li>
+
+                        <!-- REQUIRED BY ASSIGNMENT — VIEW ALL -->
+                        <li class="border-t border-gray-500 mt-2 pt-2">
+                            <a href="/solutions/projects">View All</a>
+                        </li>
+                    </ul>
                 </details>
             </li>
+
+            <!-- SHOW ONLY WHEN LOGGED IN -->
+            <% if (session.user) { %>
+
+                <!-- Add Project -->
+                <li>
+                    <a class="<%= (page == '/solutions/addProject') ? 'active' : '' %> hover:underline" 
+                       href="/solutions/addProject">
+                        Add Project
+                    </a>
+                </li>
+
+                <!-- Logout -->
+                <li>
+                    <a class="text-red-500 font-bold hover:underline" href="/logout">
+                        Logout (<%= session.user.userName %>)
+                    </a>
+                </li>
+
+            <% } else { %>
+
+                <!-- SHOW ONLY WHEN LOGGED OUT -->
+                <li>
+                    <a class="<%= (page == '/login') ? 'active' : '' %> hover:underline" 
+                       href="/login">
+                        Login
+                    </a>
+                </li>
+
+            <% } %>
+
         </ul>
     </div>
 </nav>
